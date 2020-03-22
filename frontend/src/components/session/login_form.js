@@ -45,7 +45,7 @@ class LoginForm extends React.Component {
 
     this.props.login(user).then(
       (res) => {
-        if (res.type = "RECEIVE_SESSION_ERRORS"){
+        if (res.type === "RECEIVE_SESSION_ERRORS"){
           return null;
         }
         this.props.closeModal();
@@ -58,13 +58,12 @@ class LoginForm extends React.Component {
     e.preventDefault();
     e.stopPropagation();
     const demoUser = {
-      email: "stuff@stuff.stuff",
+      email: "demouser@demo.com",
       password: "password"
     }
     this.props.login(demoUser).then(
       () => {
         this.props.closeModal();
-        this.props.history.push("/home");
       }
     )
   }

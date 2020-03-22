@@ -7,6 +7,7 @@ const User = require("../../models/User");
 const passport = require("passport");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
+const fs = require("fs");
 
 router.get("/", (req, res) => {
   User
@@ -21,6 +22,35 @@ router.get("/", (req, res) => {
     .catch(err => res.status(404).json({ nousersfound: "No users found" }));
 });
 
+router.get("/seed", async (req, res) => {
+  const arr = JSON.parse(fs.readFileSync("seed/users.json"));
+  for (let i = 0; i < arr.length; i++) {
+    arr[i].birthday = new Date(...arr[i].birthday.split("-"));
+    let user = new User(arr[i]);
+
+    await bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(user.password, salt, (err, hash) => {
+        if (err) throw err;
+        user.password = hash;
+        user.save();
+      });
+    });
+  }
+
+  User.find().then(users => {
+    res.json(users);
+  });
+});
+
+router.get("/deleteAll", async (req, res) => {
+  User.deleteMany({}, function(err) {
+    console.log("User collection removed");
+    User.find().then(users => {
+      res.json(users);
+    });
+  });
+});
+
 router.get("/:id", (req, res) => {
   User.findById(req.params.id)
     .then(user => res.json(user))
@@ -28,6 +58,7 @@ router.get("/:id", (req, res) => {
       res.status(404).json({ nouserfound: "No user found with that id" })
     );
 });
+
 
 router.post("/signup", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
