@@ -35,7 +35,7 @@ class CreateGroup extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.errorUl != undefined) {
+    if (this.errorUl !== undefined) {
       this.errorUl.scrollIntoView({ 
         behavior: 'smooth' 
       });
@@ -199,7 +199,6 @@ class CreateGroup extends React.Component {
   handleChange(type) {
     let that = this;
     return function(e) {
-      console.log(e.target.value,"endTime");
       if (type === "groupName") {
         that.setState({ groupName: e.target.value });
       } else if (type === "endTime") {
@@ -326,7 +325,8 @@ class CreateGroup extends React.Component {
           coordinates={this.props.coordinates}
         />
         <form className="create-group-form-main" onSubmit={this.handleSubmit}>
-          <div className='home-side-map-container'>
+          <div className="home-side-map-container">
+            {window.innerWidth < 736 ?
             <HomeSideMap
               fetchBusinessesByCoordinates={
                 this.props.fetchBusinessesByCoordinates
@@ -335,7 +335,7 @@ class CreateGroup extends React.Component {
               zoom={this.props.zoom}
               businesses={this.props.businesses}
               updateFilter={this.props.updateFilter}
-            />
+            /> : null }
           </div>
           <div className="create-group-form-details">
             <div className="groupname">
@@ -473,7 +473,10 @@ class CreateGroup extends React.Component {
                         >
                           Select ▾
                         </button>
-                        <div className="list-box" ref={el => (this.listBox = el)}>
+                        <div
+                          className="list-box"
+                          ref={(el) => (this.listBox = el)}
+                        >
                           <ul className="list-box-items">
                             <li className="list-box-item">
                               <label> $ </label>
@@ -543,9 +546,7 @@ class CreateGroup extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="group-errors">
-                {this.renderErrors()}
-            </div>
+            <div className="group-errors">{this.renderErrors()}</div>
           </div>
           <div className="submit-container">
             <input
@@ -553,7 +554,12 @@ class CreateGroup extends React.Component {
               type="submit"
               value="Create a Group"
             />
-            <button className="submit-create-random-group" onClick={this.handleRandomSubmit}>Demo Group</button>
+            <button
+              className="submit-create-random-group"
+              onClick={this.handleRandomSubmit}
+            >
+              Demo Group
+            </button>
           </div>
         </form>
       </div>

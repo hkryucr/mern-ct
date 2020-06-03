@@ -6,17 +6,6 @@ import { faExternalLinkAlt, faPhone, faDirections } from "@fortawesome/free-soli
 
 class JoinGroupModal extends React.Component {
 
-  percentVotes(group){
-    let voteCount = 0;
-    Object.values(group.likedBusinesses).forEach(el => {
-      voteCount += el.length;
-    });
-    Object.values(group.dislikedBusinesses).forEach(el => {
-      voteCount += el.length;
-    });
-    return Math.round((group.users.length  * group.businesses.length ) / (group.users.length) * 100 );
-  }
-
   render(){
     if (this.props.topThree.first === undefined) return null;
     const photoFirst = this.props.topThree.first.photos[0];

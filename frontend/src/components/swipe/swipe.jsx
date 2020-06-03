@@ -7,7 +7,7 @@ import SwipeMainMap from './swipe_main_map';
 import SwipeAsideMap from './swipe_aside_map';
 import SwipeUserInfo from './swipe_user_info';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faUserAlt, faUserFriends, faUserCircle, faCompass, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faUserAlt, faUserFriends, faCompass, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import _ from 'lodash';
 import './swipe.css';
 
