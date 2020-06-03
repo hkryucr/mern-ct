@@ -24,7 +24,6 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
-    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
@@ -48,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "redux-logger": "^3.0.6"
   }
 }

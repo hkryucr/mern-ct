@@ -44,6 +44,7 @@ class HomeSearch extends React.Component{
     }
 
     async optionSelected(e) {
+      e.persist();
       await this.setState({
         searchText: e.nativeEvent.target.innerText,
         options: []

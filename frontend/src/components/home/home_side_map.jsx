@@ -4,8 +4,6 @@ import './home_map.css';
 import './home_map_marker.css';
 import MarkerManager from './marker_manager';
 import _ from 'lodash';
-// import { updateFilter } from "../../actions/filter_action";
-// import { fetchBusinessesByCoordinates } from '../../actions/business_actions';
 
 mapboxgl.accessToken =
     "pk.eyJ1IjoiY2hyaXN0eDg2IiwiYSI6ImNrN3o5MzZkYTA0MTYzZG1zcXlicmV3ODYifQ.f3TP4Ewd27ht76l2HDPoRw";
@@ -32,6 +30,7 @@ class HomeSideMap extends React.Component {
         this.map.on("idle", () => {
             const curBound = this.map.getBounds()
             this.props.updateFilter("bounds", curBound);
+
             this.props.fetchBusinessesByCoordinates(curBound).then(() => {
                 return this.setState({
                     lng: this.map.getCenter().lng.toFixed(4),

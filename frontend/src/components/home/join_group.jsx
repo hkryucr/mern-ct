@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import './join_group.css'
 import JoinGroupItems from "./join_group_items";
 import JoinGroupSideMap from './join_group_side_map'

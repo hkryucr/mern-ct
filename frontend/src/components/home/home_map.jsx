@@ -14,7 +14,7 @@ class HomeMap extends React.Component {
     this.state = {
       lng: -122.402022,
       lat: 37.788228,
-      zoom: 13.5
+      zoom: 13.5    
     };
   }
 
@@ -26,17 +26,16 @@ class HomeMap extends React.Component {
       zoom: 13.5
     });
     this.MarkerManager = new MarkerManager(this.map);
-
-    this.map.on("idle", () => {
+    this.map.on("idle", async () => {
       const curBound = this.map.getBounds()
-      this.props.updateFilter("bounds", curBound);
-      this.props.fetchBusinessesByCoordinates(curBound).then(() => { 
+      await this.props.updateFilter("bounds", curBound)
+      this.props.fetchBusinessesByCoordinates(curBound).then(() => {
         return this.setState({
           lng: this.map.getCenter().lng.toFixed(4),
           lat: this.map.getCenter().lat.toFixed(4),
           zoom: this.map.getZoom().toFixed(2)
-        });          
-       })
+          });
+        })
     });
   }
 

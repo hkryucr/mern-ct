@@ -76,7 +76,7 @@ class Home extends React.Component {
               businesses={this.props.businesses}
               users={this.props.users}
               selectedFoodRestrictions={this.props.selectedFoodRestrictions}
-              handleModal={this.handleModal} 
+              handleModal={this.handleModal}
               createGroup={this.props.createGroup}
               fetchUser={this.props.fetchUser}
               updateZoom={this.props.updateZoom}
@@ -112,7 +112,7 @@ class Home extends React.Component {
                 updateFilter={this.props.updateFilter}
                 groups={this.props.groups}
               />
-            ) : (
+            ) : window.innerWidth > 737 ? (
               <HomeMap
                 fetchBusinessesByCoordinates={
                   this.props.fetchBusinessesByCoordinates
@@ -122,10 +122,12 @@ class Home extends React.Component {
                 businesses={this.props.businesses}
                 updateFilter={this.props.updateFilter}
               />
-            )}
+            ) : null}
           </div>
         </section>
-        {this.state.openModal === true ? <HomeModal handleModal={this.handleModal}/> : null}
+        {this.state.openModal === true ? (
+          <HomeModal handleModal={this.handleModal} />
+        ) : null}
       </div>
     );
   }
