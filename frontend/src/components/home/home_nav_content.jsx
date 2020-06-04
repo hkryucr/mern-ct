@@ -3,7 +3,6 @@ import JoinGroup from './join_group';
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfo } from "@fortawesome/free-solid-svg-icons";
-import _ from 'lodash';
 
 class HomeNavContent extends React.Component{
   constructor(props) {
