@@ -5,10 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfo } from "@fortawesome/free-solid-svg-icons";
 
 class HomeNavContent extends React.Component{
-  constructor(props) {
-    super(props);    
-  }
-
   render(){
     const currentTab =
       this.props.form === "create group" ? (

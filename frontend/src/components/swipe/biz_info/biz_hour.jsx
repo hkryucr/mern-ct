@@ -2,10 +2,6 @@ import React from 'react';
 import './biz_hour.css';
 
 class BizHour extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     timeConvert(hour) {
         const start = hour.slice(0, 2);
         const suffix = (parseInt(start) >= 12) ? 'pm' : 'am';
