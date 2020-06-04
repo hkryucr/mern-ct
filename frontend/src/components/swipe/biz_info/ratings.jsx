@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhoneAlt, faExternalLinkAlt, faStar as faStarSolid, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
+import { faStar as faStarSolid, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons';
 
 const StarDiv = () => (
@@ -22,20 +22,20 @@ const Ratings = (props) => {
     const starFloat = parseFloat(props.ratings);
 
     if (starInt === starFloat){
-        for (var i = 0; i < starInt; i++) {
+        for (let i = 0; i < starInt; i++) {
             starDiv.push(<StarDiv key={i} />);
         }
-        for (var i = 4; i >= starInt; i--) {
+        for (let i = 4; i >= starInt; i--) {
             starDiv.push(<WhiteStarDiv key={i} />);
         }
     } else {
-        for (var i = 0; i < starInt; i++) {
+        for (let i = 0; i < starInt; i++) {
             starDiv.push(<StarDiv key={i} />);
         }
 
         starDiv.push(<HalfStarDiv key={starInt} />);
 
-        for (var i = 4; i >= starFloat; i--) {
+        for (let i = 4; i >= starFloat; i--) {
             starDiv.push(<WhiteStarDiv key={i} />);
         }
     }
