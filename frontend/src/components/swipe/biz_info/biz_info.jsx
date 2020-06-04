@@ -4,7 +4,6 @@ import BizHour from './biz_hour';
 import './biz_info.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneAlt, faExternalLinkAlt, faDirections } from '@fortawesome/free-solid-svg-icons';
-import _ from 'lodash';
 
 class BizInfo extends React.Component {
   constructor(props) {
