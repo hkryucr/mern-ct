@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import JoinGroupModal from './join_group_modal';
-import _ from 'lodash';
 import "balloon-css";
 
 class JoinGroupItems extends React.Component {
