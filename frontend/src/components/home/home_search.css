@@ -47,6 +47,9 @@
     display: flex;
     align-self: center;
 }
+.home-search-bar-container{
+    cursor: pointer;
+}
 
 .home-search-bar input {
     width: 95%;   
