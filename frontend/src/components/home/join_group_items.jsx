@@ -26,7 +26,6 @@ class JoinGroupItems extends React.Component {
   timeValid(endTime) {
     const gruopEndTime = new Date(endTime);
     const currentTime = new Date();
-
     return gruopEndTime.getTime() < currentTime.getTime();
   }
 
@@ -50,12 +49,12 @@ class JoinGroupItems extends React.Component {
 
   finishedVotes(group) {
     let count = 0;
-    Object.values(group.likedBusinesses).forEach(el => {
-      if (el.includes(this.props.user.id)) count++;
-    });
-    Object.values(group.dislikedBusinesses).forEach(el => {
-      if (el.includes(this.props.user.id)) count++;
-    });
+    for (let key in group.likedBusinesses){
+      if (group.likedBusinesses[key].includes(this.props.user.id)) count++;
+    }
+    for (let key in group.dislikedBusinesses) {
+      if (group.dislikedBusinesses[key].includes(this.props.user.id)) count++;
+    }
     return group.businesses.length === count;
   }
 
@@ -68,28 +67,27 @@ class JoinGroupItems extends React.Component {
   }
 
   findTopThree(group){
-    const bizsValues = Object.values(group.businesses);
     const likedBizs = group.likedBusinesses;
     this.first = 0;
     this.second = 0; 
     this.third = 0;
-    for (let i = 0; i < bizsValues.length; i++) {
-      const curBizId = bizsValues[i]._id;
+    for (let key in group.businesses){
+      const curBizId = group.businesses[key]._id;
       if (likedBizs[curBizId].length >= this.first) {
         this.third = this.second;
         this.thirdBiz = this.secondBiz;
         this.second = this.first;
         this.secondBiz = this.firstBiz;
         this.first = likedBizs[curBizId].length;
-        this.firstBiz = bizsValues[i];
+        this.firstBiz = group.businesses[key];
       } else if (likedBizs[curBizId].length >= this.second) {
         this.third = this.second;
         this.thirdBiz = this.secondBiz;
         this.second = likedBizs[curBizId].length;
-        this.secondBiz = bizsValues[i];
+        this.secondBiz = group.businesses[key];
       } else if (likedBizs[curBizId].length >= this.third) {
         this.third = likedBizs[curBizId].length;
-        this.thirdBiz = bizsValues[i];
+        this.thirdBiz = group.businesses[key];
       }
     }
   }
